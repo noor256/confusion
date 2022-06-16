@@ -1,6 +1,7 @@
 import React from 'react';
-import { Card, CardImg, CardBody, CardTitle, CardText, CardImgOverlay } from 'reactstrap';
+import { Card, CardImg, CardBody, CardTitle, CardText, CardImgOverlay,Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { DISHES } from '../shared/dishes';
+import { Link } from 'react-router-dom';
 
 
 
@@ -47,6 +48,7 @@ import { DISHES } from '../shared/dishes';
             )
         })
         return (
+            
             <div className='col-12 col-md-5 m-1'>
                 <h3> Comments </h3>
                 <ul className='list-unstyled'>
@@ -71,9 +73,22 @@ import { DISHES } from '../shared/dishes';
         const dishComment = <RenderComments comments={props.dish.comment}/>;
 
         return (
+            <div className="container">
+            <div className="row">
+            <Breadcrumb>
+
+                <BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
+                <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
+            </Breadcrumb>
+            <div className="col-12">
+                <h3>{props.dish.name}</h3>
+                <hr />
+            </div>                
+        </div>
             <div className='row'>
                 {dishItem}
                 {dishComment}
+            </div>
             </div>
         )
     }
