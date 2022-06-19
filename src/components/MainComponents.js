@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import Home from './HomeComponent';
 import Menu from './MenuComponent';
 import About from './AboutComponent';
-import Contact from './ContactComponent';
-import Header from './HeaderComponent';
+import Contact from './ContactComponenent';
+import Header from './HeaderComponents';
 import Footer from './FooterComponent';
 import DishDetail from './DishdetailComponent';
 
