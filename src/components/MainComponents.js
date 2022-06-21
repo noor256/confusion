@@ -16,7 +16,7 @@ import { PROMOTIONS } from '../shared/promotions'
 
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import {connect} from 'react-redux';
-
+import {TransitionGroup, CSSTransition } from 'react-transition-group';
 
 fetchDishes: () => { dispatch(fetchDishes())}
 resetFeedbackForm: () => {dispatch(actions.reset('feedback'))}
@@ -100,8 +100,9 @@ class Main extends Component {
         return (
             <div>
                 <Header></Header>
-
-                <Switch>
+              <TransitionGroup>
+               <CSSTransition key={this.props.location.key} classNames="page" timeout={300}>
+                <Switch location={this.props.location}>
                     <Route path="/home" component={ HomePage } />
                     <Route exact path="/menu" component={() => <Menu dishes={this.props.dishes}/> }/>
 
@@ -113,7 +114,8 @@ class Main extends Component {
                     {/* if url dosesnt match, bydefault redirect to */}
                     <Redirect to="/home" />
                 </Switch>
-
+                </CSSTransition>
+           </TransitionGroup>
                 <Footer></Footer>
             </div> 
         );
